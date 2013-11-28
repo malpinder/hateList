@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	h1.
+		All that hate.
+	ul
+		each hate, i in hatelist
+			li
+				a(href="/hate/"+hate._id)= hate.hateTitle
+				p= "Hate: " + hate.hateRate + " " + hate.hateDate

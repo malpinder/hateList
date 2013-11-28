@@ -1,0 +1,16 @@
+extends layout
+
+block content
+	div
+		h1= hate.hateTitle
+		h2="Hated " + hate.hateRate + " times"
+		p= hate.hateBody
+	form(name="uphate",method="post",action="/hate/uphate")
+		input(type="hidden", name="_id", value=hate._id)
+		button(type="submit") I hate this shit
+	div
+		h2="What other haters think: "
+		each comment, i in hate.hateComments
+			div
+				p= comment.name
+				p= comment.body

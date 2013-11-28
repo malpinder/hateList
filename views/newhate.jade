@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	h1= title
+	form#formNewHate(name="addhate",method="post",action="/hate/add")
+		input#inputHate(type="text", name="hatetitle")
+		br
+		textarea#bodyHate(name="hatebody", rows=5)
+		br
+		button#btnSubmit(type="submit") submit
