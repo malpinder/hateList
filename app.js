@@ -38,6 +38,7 @@ app.get('/hate/new', routes.newhate);
 app.post('/hate/add', routes.addhate(db));
 app.get('/hate/:id', routes.viewhate(db));
 app.post('/hate/uphate', routes.uphate(db));
+app.post('/hate/addcomment', routes.addcomment(db));
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

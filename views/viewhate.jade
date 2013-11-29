@@ -14,3 +14,14 @@ block content
 			div
 				p= comment.name
 				p= comment.body
+	form(name="comment", method="post",action="/hate/addcomment")
+		input(type="hidden", name="_id", value=hate._id)
+		span Name:
+		br
+		input(type="text", name="commentname")
+		br
+		span Comment:
+		br
+		textarea(rows=5, name="commentbody")
+		br
+		button(type="submit") Comment on this bitch!

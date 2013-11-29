@@ -75,3 +75,25 @@ exports.uphate = function(db){
 		)
 	}
 }
+exports.addcomment = function(db){
+	return function(req, res){
+		var collection = db.get('hatecollec');
+		var hateId = req.body._id;
+		var name = req.body.commentname;
+		var body = req.body.commentbody;
+		var date = new Date();
+		var comment = {
+			"name":name,
+			"body":body,
+			"date":date
+		};
+		collection.update(
+			{_id:hateId},
+			{$push :{hateComments:comment}},
+			function(e, doc){
+				res.redirect("/hate/"+hateId);
+			}
+		)
+			
+	}
+}
