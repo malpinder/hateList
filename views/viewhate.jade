@@ -5,7 +5,8 @@ block content
 		h1= hate.hateTitle
 		h2="Hated " + hate.hateRate + " times"
 		p= hate.hateBody
-	form(name="uphate",method="post",action="/hate/uphate")
+	form(name="uphate",method="post",action="/hate/" + hate._id + "/up")
+		input(type="hidden", name="_method", value="put")
 		input(type="hidden", name="_id", value=hate._id)
 		button(type="submit") I hate this shit
 	div
@@ -14,7 +15,8 @@ block content
 			div
 				p= comment.name
 				p= comment.body
-	form(name="comment", method="post",action="/hate/addcomment")
+	form(name="comment", method="post",action="/hate/" + hate._id + "/addcomment")
+		input(type="hidden", name="_method", value="put")
 		input(type="hidden", name="_id", value=hate._id)
 		span Name:
 		br
