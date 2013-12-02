@@ -1,14 +1,16 @@
-Trying to make a simple hate list using node.js, express and mongodb.
-Might add passport.js authentication later.
+Trying to make a simple hate list using node.js, express, passportjs, mongoose and mongodb.
 
 What's done so far:
 	Creating hate.
 	Listing hate.
 	Upvoting hate.
-  Commenting hate.
+  	Commenting hate.
+  	Sessions and authentication.
 
 Todo:
+	Signup.
+	Proper MVC structure, right now it's all kinda thrown together.
+	Hategroups.
 	Different options for listing hate. (creation date, hate rate, comment count, by haters and creators?!)
 	Adding and uploading images.
-	Sessions and authentication.
 	Pretty graphics.

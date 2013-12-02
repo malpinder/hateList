@@ -25,6 +25,7 @@ db.once('open', function callback(){
 var HateSchema = new mongoose.Schema({
 	hateTitle: String,
 	hateBody: String,
+  hateUser: String,
 	hateDate: Date,
 	hateRate: Number,
 	hateComments: Array

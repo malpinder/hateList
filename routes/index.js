@@ -29,12 +29,14 @@ exports.addhate = function(Hate){
 	return function(req, res){
 		var hateTitle = req.body.hatetitle;
 		var hateBody = req.body.hatebody;
+		var hateUser = req.user.username;
 		var hateRate = 0;
 		var hateComments = [];
 		var hateDate = new Date();
 		new Hate({
 			hateTitle: hateTitle,
 			hateBody: hateBody,
+			hateUser: hateUser,
 			hateDate: hateDate,
 			hateRate: hateRate,
 			hateComments: []
@@ -71,7 +73,7 @@ exports.uphate = function(Hate){
 exports.addcomment = function(Hate){
 	return function(req, res){
 		var hateId = req.body._id;
-		var name = req.body.commentname;
+		var name = req.user.username;
 		var body = req.body.commentbody;
 		var date = new Date();
 		var comment = {

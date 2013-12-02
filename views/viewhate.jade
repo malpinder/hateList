@@ -18,10 +18,6 @@ block content
 	form(name="comment", method="post",action="/hate/" + hate._id + "/addcomment")
 		input(type="hidden", name="_method", value="put")
 		input(type="hidden", name="_id", value=hate._id)
-		span Name:
-		br
-		input(type="text", name="commentname")
-		br
 		span Comment:
 		br
 		textarea(rows=5, name="commentbody")
