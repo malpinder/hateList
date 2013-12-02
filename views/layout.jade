@@ -4,6 +4,23 @@ html
 		title= title
 		link(rel='stylesheet', href='/stylesheets/style.css')
 	body
-		a(href="/hate/new")= "New hate"
-		a(href="/hate")= "All hate"
+		-if(!user)
+			p
+				a(href="/") Home
+				a(href="/login") Log in, son!
+				a(href="/hate")= "All hate"
+		else
+			p
+				a(href="/") Home
+				a(href="/hate/new") New hate
+				a(href="/hate") All hate
+				a(href="/account") Account
+				a(href="/logout") Logout!~
 		block content
+
+
+
+
+
+		
+		

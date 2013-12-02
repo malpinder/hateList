@@ -4,20 +4,25 @@
  */
 
 exports.index = function(req, res){
-	res.render('index', { title: 'Hatelist test' });
+	res.render('index', { title:'Hatelist passport test', user: req.user });
 };
-
+exports.login = function(req, res){
+	res.render('login', { user: req.user, message: req.session.messages });
+};
 exports.hate = function(Hate){
 	return function(req, res){
 		Hate.find({}).sort({hateDate: -1}).exec(function(e,docs){
 			res.render('hate', {
+				user: req.user,
 				"hatelist": docs
 			})
 		})
 	}
 }
 exports.newhate = function(req, res){
-	res.render('newhate', { title: 'New hate' });
+	res.render('newhate', { 
+		user: req.user,
+		title: 'New hate' });
 };
 
 exports.addhate = function(Hate){
@@ -45,6 +50,7 @@ exports.viewhate = function(Hate){
 		var hateId = req.params.id;
 		Hate.findOne({ _id:hateId}, function(e, doc){
 			res.render('viewhate',{
+				user: req.user,
 				"hate" : doc
 			})
 		})

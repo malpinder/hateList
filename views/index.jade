@@ -1,5 +1,8 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+	h1= title
+	if(!user)
+		p Welcome to #{title}. Log in fag.
+	else
+		p Hello, #{user.username}. You're a fag.
