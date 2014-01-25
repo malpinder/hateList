@@ -1,7 +1,6 @@
+/*jslint node: true */
 'use strict';
-var db = require('../config/dbschema'),
-passport = require('passport'),
-LocalStrategy = require('passport-local').Strategy;
+var db = require('../config/dbschema'), passport = require('passport'), LocalStrategy = require('passport-local').Strategy;
 
 //serialize
 passport.serializeUser(function(user, done) {

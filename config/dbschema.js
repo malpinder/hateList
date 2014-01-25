@@ -1,16 +1,14 @@
+/*jslint node: true */
 'use strict';
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt');
 var SALT_WORK_FACTOR = 10;
 exports.mongoose = mongoose;
 
-var uristring =
-process.env.MONGOLAB_URI ||
-process.env.MONGOHQ_URL ||
-'mongodb://localhost/hateList';
+var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/hateList';
 var mongoOptions = {db: {safe: true}};
 
-mongoose.connect(uristring, mongoOptions, function(err){
+mongoose.connect(uristring, mongoOptions, function (err) {
     if (err) {
         console.log('Err connecting to: ' + uristring + '. ' + err);
     } else {
@@ -30,18 +28,18 @@ var userSchema = new Schema({
     accessToken : {type: String}
 });
 
-userSchema.pre('save', function(next){
+userSchema.pre('save', function (next) {
     var user = this;
 
-    if(!user.isModified('password')) {
+    if (!user.isModified('password')) {
         return next();
     }
-    bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt){
-        if(err) {
+    bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt) {
+        if (err) {
             return next(err);
         }
-        bcrypt.hash(user.password, salt, function(err, hash){
-            if(err) {
+        bcrypt.hash(user.password, salt, function (err, hash) {
+            if (err) {
                 return next(err);
             }
             user.password = hash;
@@ -50,20 +48,19 @@ userSchema.pre('save', function(next){
     });
 });
 
-userSchema.methods.comparePassword = function(candidatePassword, cb){
-    bcrypt.compare(candidatePassword, this.password, function(err, isMatch){
-        if(err){
+userSchema.methods.comparePassword = function (candidatePassword, cb) {
+    bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
+        if (err) {
             return cb(err);
         }
         cb(null, isMatch);
     });
 };
 
-userSchema.methods.generateRandomToken = function(){
+userSchema.methods.generateRandomToken = function () {
     //var user = this;
-    var chars = '_!abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-    var token = new Date().getTime() + '_';
-    for(var x = 0; x < 16; x+=1){
+    var chars = '_!abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890', token = new Date().getTime() + '_';
+    for (var x = 0; x < 16; x+=1){
         var i = Math.floor( Math.random() * 62);
         token+= chars.charAt(i);
     }

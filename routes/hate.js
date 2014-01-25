@@ -62,13 +62,10 @@ exports.uphate = function(Hate){
 exports.addcomment = function(Hate){
     return function(req, res){
         var hateId = req.body._id;
-        var name = req.user.username;
-        var body = req.body.commentbody;
-        var date = new Date();
         var comment = {
-            'name':name,
-            'body':body,
-            'date':date
+            'name':req.user.username,
+            'body':req.body.commentbody,
+			'date':new Date()
         };
         Hate.update(
             {_id:hateId},

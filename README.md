@@ -1,4 +1,4 @@
-Trying to make a simple hate list using node.js, express, passportjs, mongoose and mongodb.
+Trying to learn Node by making a simple social network for hating things using node.js, express, passportjs, mongoose and mongodb.
 
 What's done so far:
 	Creating hate.
